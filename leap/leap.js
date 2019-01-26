@@ -4,11 +4,7 @@ export const isLeap = (year) => {
     var isEvenlyDivisibleBy400 = year % 400 == 0;
     if (isDivisibleBy4)
     {
-        if (isEvenlyDivisibleBy100 && !isEvenlyDivisibleBy400)
-        {
-            return false;
-        }
-        return true;
+        return !isEvenlyDivisibleBy100 || isEvenlyDivisibleBy400;
     }
     return false;
 };
