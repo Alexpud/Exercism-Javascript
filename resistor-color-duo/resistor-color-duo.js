@@ -3,24 +3,33 @@
 // convenience to get you started writing code faster.
 //
 
-let COLORS = [];
-COLORS['BLACK'] = 0;
-COLORS['BROWN'] = 1;
-COLORS['RED'] = 2;
-COLORS['ORANGE'] = 3;
-COLORS['YELLOW'] = 4;
-COLORS['GREEN'] = 5;
-COLORS['BLUE'] = 6;
-COLORS['VIOLET'] = 7;
-COLORS['GREY'] = 8;
-COLORS['WHITE'] = 9;
+let Colors = {
+  Black: 0,
+  Brown: 1,
+  Red: 2,
+  Orange: 3,
+  Yellow: 4,
+  Green: 5,
+  Blue: 6,
+  Violet: 7,
+  Grey: 8,
+  White: 9
+};
 
 export const value = (colors) => {
   let colorsNumberRepresentation = "";
-  colors.forEach((color) => {
-    let colorValue = COLORS[color.toUpperCase()];
-    if (colorValue === undefined) throw Error('Color not found');
-    colorsNumberRepresentation += colorValue;
-  });
+  colors.map((color) => colorsNumberRepresentation += colorNumberRepresentationLookUp(color));
   return Number(colorsNumberRepresentation);
 };
+
+const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+const colorNumberRepresentationLookUp = (color) => {
+  let colorValue = Colors[capitalize(color)];
+  if (colorValue === undefined) throw Error('Color not found');
+  return colorValue;
+}
+
