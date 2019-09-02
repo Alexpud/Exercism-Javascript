@@ -23,13 +23,11 @@ export const value = (colors) => {
 };
 
 const capitalize = (s) => {
-  if (typeof s !== 'string') return ''
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
 const colorNumberRepresentationLookUp = (color) => {
   let colorValue = Colors[capitalize(color)];
-  if (colorValue === undefined) throw Error('Color not found');
   return colorValue;
 }
 
