@@ -5,33 +5,39 @@ import { FORMERR } from "dns";
 // convenience to get you started writing code faster.
 //
 
-function arabicRoman(arabic, roman) {
-  this.arabic = arabic;
-  this.roman = roman;
+function NumberRepresentation(arabic, roman) {
+  this.inArabic = arabic;
+  this.inRoman = roman;
 }
 
-let arabicRomans = [];
-arabicRomans.push(new arabicRoman(1000, 'M'));
-arabicRomans.push(new arabicRoman(900, 'CM'));
-arabicRomans.push(new arabicRoman(500, 'D'));
-arabicRomans.push(new arabicRoman(400, 'CD'));
-arabicRomans.push(new arabicRoman(100, 'C'));
-arabicRomans.push(new arabicRoman(90, 'XC'));
-arabicRomans.push(new arabicRoman(50, 'L'));
-arabicRomans.push(new arabicRoman(40, 'XL'));
-arabicRomans.push(new arabicRoman(10, 'X'));
-arabicRomans.push(new arabicRoman(9, 'IX'));
-arabicRomans.push(new arabicRoman(5, 'V'));
-arabicRomans.push(new arabicRoman(4, 'IV'));
-arabicRomans.push(new arabicRoman(1, 'I'));
+let numberRepresentations = [];
+numberRepresentations.push(new NumberRepresentation(1000, 'M'));
+numberRepresentations.push(new NumberRepresentation(900, 'CM'));
+numberRepresentations.push(new NumberRepresentation(500, 'D'));
+numberRepresentations.push(new NumberRepresentation(400, 'CD'));
+numberRepresentations.push(new NumberRepresentation(100, 'C'));
+numberRepresentations.push(new NumberRepresentation(90, 'XC'));
+numberRepresentations.push(new NumberRepresentation(50, 'L'));
+numberRepresentations.push(new NumberRepresentation(40, 'XL'));
+numberRepresentations.push(new NumberRepresentation(10, 'X'));
+numberRepresentations.push(new NumberRepresentation(9, 'IX'));
+numberRepresentations.push(new NumberRepresentation(5, 'V'));
+numberRepresentations.push(new NumberRepresentation(4, 'IV'));
+numberRepresentations.push(new NumberRepresentation(1, 'I'));
 
 export const toRoman = (number) => {
   let result = "";
-  arabicRomans.forEach((element) => {
-    while(number - element.arabic >= 0) {
-      number -= element.arabic;
-      result += element.roman;
-    }
+  numberRepresentations.forEach((numberRepresentation) => {
+    ({ number, result } = mapToRomanNumber(number, numberRepresentation, result));
   });
   return result;
 };
+
+function mapToRomanNumber(number, numberRepresentation, result) {
+  while (number - numberRepresentation.inArabic >= 0) {
+    number -= numberRepresentation.inArabic;
+    result += numberRepresentation.inRoman;
+  }
+  return { number, result };
+}
+
