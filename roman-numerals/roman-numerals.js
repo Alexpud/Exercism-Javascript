@@ -4,16 +4,30 @@ import { FORMERR } from "dns";
 // This is only a SKELETON file for the 'Roman Numerals' exercise. It's been provided as a
 // convenience to get you started writing code faster.
 //
-let arabicRoman = [];
-arabicRoman.push({'arabic': 10, 'roman': 'X'});
-arabicRoman.push({'arabic': 9, 'roman': 'IX'});
-arabicRoman.push({'arabic': 5, 'roman': 'V'});
-arabicRoman.push({'arabic': 4, 'roman': 'IV'});
-arabicRoman.push({'arabic': 1, 'roman': 'I'});
+
+function arabicRoman(arabic, roman) {
+  this.arabic = arabic;
+  this.roman = roman;
+}
+
+let arabicRomans = [];
+arabicRomans.push(new arabicRoman(1000, 'M'));
+arabicRomans.push(new arabicRoman(900, 'CM'));
+arabicRomans.push(new arabicRoman(500, 'D'));
+arabicRomans.push(new arabicRoman(400, 'CD'));
+arabicRomans.push(new arabicRoman(100, 'C'));
+arabicRomans.push(new arabicRoman(90, 'XC'));
+arabicRomans.push(new arabicRoman(50, 'L'));
+arabicRomans.push(new arabicRoman(40, 'XL'));
+arabicRomans.push(new arabicRoman(10, 'X'));
+arabicRomans.push(new arabicRoman(9, 'IX'));
+arabicRomans.push(new arabicRoman(5, 'V'));
+arabicRomans.push(new arabicRoman(4, 'IV'));
+arabicRomans.push(new arabicRoman(1, 'I'));
 
 export const toRoman = (number) => {
   let result = "";
-  arabicRoman.forEach((element) => {
+  arabicRomans.forEach((element) => {
     while(number - element.arabic >= 0) {
       number -= element.arabic;
       result += element.roman;
