@@ -3,15 +3,14 @@
 // convenience to get you started writing code faster.
 //
 
-const dnaRnaDict = []
-dnaRnaDict['C'] = 'G';
-dnaRnaDict['G'] = 'C';
-dnaRnaDict['T'] = 'A';
-dnaRnaDict['A'] = 'U';
+const DNA_RNA_DICT = {
+  C: 'G',
+  G: 'C',
+  T: 'A',
+  A: 'U'
+};
 
 export const toRna = (dna) => {
   if (dna.length === 0) return '';
-  var rnaStrand = "";
-  dna.split('').forEach((nucleotide) => rnaStrand += dnaRnaDict[nucleotide]);
-  return rnaStrand;
+  return [...dna].map((nucleotide) => DNA_RNA_DICT[nucleotide]).join('');
 };
